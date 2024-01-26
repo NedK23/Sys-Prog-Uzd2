@@ -342,21 +342,21 @@ namespace CLRuzd2Framework {
 			   // fileToolStripMenuItem
 			   // 
 			   this->fileToolStripMenuItem->Name = L"fileToolStripMenuItem";
-			   this->fileToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			   this->fileToolStripMenuItem->Size = System::Drawing::Size(100, 22);
 			   this->fileToolStripMenuItem->Text = L"Save";
 			   this->fileToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::fileToolStripMenuItem_Click);
 			   // 
 			   // readToolStripMenuItem
 			   // 
 			   this->readToolStripMenuItem->Name = L"readToolStripMenuItem";
-			   this->readToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			   this->readToolStripMenuItem->Size = System::Drawing::Size(100, 22);
 			   this->readToolStripMenuItem->Text = L"Read";
 			   this->readToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::readToolStripMenuItem_Click);
 			   // 
 			   // exitToolStripMenuItem
 			   // 
 			   this->exitToolStripMenuItem->Name = L"exitToolStripMenuItem";
-			   this->exitToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			   this->exitToolStripMenuItem->Size = System::Drawing::Size(100, 22);
 			   this->exitToolStripMenuItem->Text = L"Exit";
 			   this->exitToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::exitToolStripMenuItem_Click);
 			   // 
@@ -424,22 +424,22 @@ namespace CLRuzd2Framework {
 			   }
 			   else
 			   {
-				   array<int>^ sortedNamuDarbai = gcnew array<int>(NamuDarbai->Length);
-				   Array::Copy(NamuDarbai, sortedNamuDarbai, NamuDarbai->Length);
-				   Array::Sort(sortedNamuDarbai);
+				   array<int>^ SortedNamuDarbai = gcnew array<int>(NamuDarbai->Length);
+				   Array::Copy(NamuDarbai, SortedNamuDarbai, NamuDarbai->Length);
+				   Array::Sort(SortedNamuDarbai);
 
 				   double mediana = 0.0;
 
-				   if (sortedNamuDarbai->Length % 2 == 0)
+				   if (SortedNamuDarbai->Length % 2 == 0)
 				   {
-					   int middle1 = sortedNamuDarbai->Length / 2 - 1;
-					   int middle2 = sortedNamuDarbai->Length / 2;
-					   mediana = (sortedNamuDarbai[middle1] + sortedNamuDarbai[middle2]) / 2.0;
+					   int middle1 = SortedNamuDarbai->Length / 2 - 1;
+					   int middle2 = SortedNamuDarbai->Length / 2;
+					   mediana = (SortedNamuDarbai[middle1] + SortedNamuDarbai[middle2]) / 2.0;
 				   }
 				   else
 				   {
-					   int middle = sortedNamuDarbai->Length / 2;
-					   mediana = sortedNamuDarbai[middle];
+					   int middle = SortedNamuDarbai->Length / 2;
+					   mediana = SortedNamuDarbai[middle];
 				   }
 
 				   galutinis = 0.4 * mediana + 0.6 * EgzPazymys;
@@ -525,6 +525,7 @@ namespace CLRuzd2Framework {
 				   }
 			   }
 		   }
+		   //========================================================================================
 		   void ReadFile() {
 			   OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog();
 			   openFileDialog1->Filter = "Text Files|*.txt";
@@ -547,6 +548,8 @@ namespace CLRuzd2Framework {
 			   }
 		   }
 
+		   //========================================================================================
+
 	private: System::Void StudentasAdd_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		String^ vardas = vardastxt->Text;
@@ -561,7 +564,7 @@ namespace CLRuzd2Framework {
 				return;
 			}
 			if (NamuDarbuarr->Length < 4){
-				MessageBox::Show("Iveskite 4 namu darbus");
+				MessageBox::Show("Iveskite 4 namu darbus, kurie atskirti kableliais");
 				return;
 			}
 
@@ -590,7 +593,7 @@ namespace CLRuzd2Framework {
 		}
 		catch (FormatException^ ex)
 		{
-			MessageBox::Show("Atskirkite namu darbu pazymius kableliais");
+			MessageBox::Show("Iveskite egzamino bala");
 		}
 	}
 	//========================================================================================
@@ -670,6 +673,7 @@ private: System::Void VidBtn_CheckedChanged(System::Object^ sender, System::Even
 	UpdateStudentas();
 
 }
+//========================================================================================
 private: System::Void toolStripDropDownButton1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void exitToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
